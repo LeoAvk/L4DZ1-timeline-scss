@@ -1,0 +1,121 @@
+%position-object {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+%absolute-align{
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-weight: bolder;
+}
+    $red: rgb(230, 48, 67);
+    $orange: rgb(246, 77, 42);
+    $light-red:rgb(255, 75, 62);
+    $yellow:rgb(255, 178, 15);
+    $dark-yellow:rgb(255, 148, 34);
+    $light-orange:rgb(255, 110, 43);
+
+ .orange{
+     background: $orange;
+ }
+ .data-orange{
+     color: currentColor;
+ }
+ .light-red{
+     background: $light-red;
+ }
+ .data-light-red{
+     color: currentColor;
+ }
+ .yellow{
+     background: $yellow;
+ }
+ .data-yellow{
+     color: currentColor;
+ }
+ .dark-yellow{
+     background: $dark-yellow;
+ }
+ .data-dark-yellow{
+     color: currentColor;
+ }
+ .light-orange{
+     background: $light-orange;
+ }
+ .data-light-orange{
+     color: currentColor;
+ }
+
+body{
+    background: #76ffb8;
+    counter-reset: section 2011;
+}
+.timeline{
+    @extend %position-object;
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center; 
+
+    .block{
+        width: 100px;
+        height: 40px;
+        border: 1px solid black;
+        margin: 3px;
+        background-color: var(--red);
+        position: relative;
+
+        .event{
+            @extend %position-object;
+            width: 10px;
+            height: 10px;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+        .line{
+            @extend %absolute-align;
+            bottom: -39px;
+            min-height: 130px;
+            width: 2px;
+            background: black;
+            font-weight: bolder;
+        }
+        .up{
+            @extend %absolute-align;
+            background-color: rgb(230, 48, 67);
+            border: 1px solid black;
+            bottom: 120px;
+            border-radius: 50%;
+            font-weight: bolder;
+
+            &-img{
+                filter: brightness(0) invert(1);
+            }
+        }
+        .data{
+            position: absolute;
+            top: 50px;
+            color: rgb(230, 48, 67);
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            bottom: -20px;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+
+            h1::before{
+                counter-increment: section;
+                content: counter(section);
+            }
+        }
+    }
+    
+}
+
